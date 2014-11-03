@@ -1,24 +1,25 @@
-<script>
-  var map;
+<script type="text/javascript">
+  var my_map;
+  var new_marker;
   // Define new JScript variables to hold LAT and LNG
-  // var map_lat = <%= @output_latitude.to_json %>;
-  // var map_lng = <%= @output_longitude.to_json %>;
-  // var marker_title = <%= @output_address.to_json %>;
+  var map_lat = <%= @output_latitude.to_json %>;
+  var map_lng = <%= @output_longitude.to_json %>;
+  var marker_title = "<%= @output_address %>";
 
   function initialize() {
-    // var myLatlng = new google.maps.LatLng(-34.397, 150.644);
+    var myLatlng = new google.maps.LatLng(map_lat, map_lng);
     var mapOptions = {
-      zoom: 8,
-      center: new google.maps.LatLng(-34.397, 150.644);
+      zoom: 14,
+      center: myLatlng
     };
-    map = new google.maps.Map(document.getElementById('map-canvas'),
+    my_map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
 
-    // var marker = new google.maps.Marker({
-    //     position: myLatlng,
-    //     map: map,
-    //     title: 'Address'
-    // });
+    new_marker = new google.maps.Marker({
+        position: myLatlng,
+        map: my_map,
+        title: marker_title
+    });
   }
 
   google.maps.event.addDomListener(window, 'load', initialize);
