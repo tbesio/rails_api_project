@@ -1,3 +1,21 @@
+<script>
+  var map;
+  // Define new JScript variables to hold LAT and LNG
+  var map_lat = <%= @output_latitude.to_json %>;
+  var map_lng = <%= @output_longitude.to_json %>;
+
+  function initialize() {
+    var mapOptions = {
+      zoom: 14,
+      center: new google.maps.LatLng(map_lat, map_lng)
+    };
+    map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>
 <div class="container">
   <div class="jumbotron">
     <h1>Weather For Your Location</h1>
@@ -8,5 +26,8 @@
       <p>The outlook for the next hour is: <b><%= @the_hour_outlook %></b></p>
       <p>The outlook for the next day is: <b><%= @the_day_outlook %></b></p>
     </div>
+  </div>
+  <div class="row">
+    <div id="map-canvas"></div>
   </div>
 </div>

@@ -25,7 +25,9 @@ class ForecastsController < ApplicationController
     #   and the longitude in a variable called 'the_longitude'.
 
     the_latitude = maps_address_result["geometry"]["location"]["lat"]
+    @output_latitude = the_latitude
     the_longitude = maps_address_result["geometry"]["location"]["lng"]
+    @output_longitude = the_longitude
 
     # Create a url to pass to forecast.io API with the LAT/LON pair included.
     api_call_url = forecast_io_api_w_key + the_latitude.to_s + "," + the_longitude.to_s
