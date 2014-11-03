@@ -1,5 +1,12 @@
-<h1>Weather For Your Location</h1>
-
-<p>The current temperature at <%= @output_address %> is <%= @the_temperature %> degrees.</p>
-<p>The outlook for the next hour is: <%= @the_hour_outlook %></p>
-<p>The outlook for the next day is: <%= @the_day_outlook %></p>
+<div class="container">
+  <div class="jumbotron">
+    <h1>Weather For Your Location</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <p>The current temperature at <b><%= @output_address %></b> is <b><%= @the_temperature %> &deg;F</b>.</p>
+      <p>The outlook for the next hour is: <b><%= @the_hour_outlook %></b></p>
+      <p>The outlook for the next day is: <b><%= @the_day_outlook %></b></p>
+    </div>
+  </div>
+</div>
